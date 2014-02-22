@@ -3,10 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "live": "nodemon app.js"
   },
   "dependencies": {
     "express": "3.4.8",
-    "ejs": "*"
+    "ejs": "*",
+    "mongoose": "~3.8.7",
+    "q": "~1.0.0",
+    "twitter": "~0.2.5"
   }
 }

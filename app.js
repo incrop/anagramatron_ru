@@ -29,8 +29,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-// initialization
-require('./angora-mantra/config');
+// connect to database
+require('./angora-mantra/db').open();
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

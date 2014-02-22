@@ -6,7 +6,7 @@ config._inited.then(function(c) {
     var t = new twitter({
         consumer_key: c.consumer_key,
         consumer_secret: c.consumer_secret,
-        access_token_key: c.access_token,
+        access_token_key: c.access_token_key,
         access_token_secret:  c.access_token_secret
     });
     t.login();

@@ -1,0 +1,29 @@
+require('../angora-mantra/db').open(true).then(function(db) {
+    var Q = require('q');
+
+    function addConf(key, value) {
+        var d = Q.defer();
+        new db.ConfigItem({ key: key, value: value }).save(function (err) {
+            if (err) throw err;
+            d.resolve();
+        });
+        return d.promise;
+    }
+
+    // Copy reset-db.example to reset-db.js.
+    // Change these to real OAuth credentials.
+    // run `npm run reset-db`
+
+    Q.all([
+        addConf('consumer_key',        'xxxxxxxxxxxxxxxxxxxxxx'),
+        addConf('consumer_secret',     'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+        addConf('access_token_key',    'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+        addConf('access_token_secret', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    ]).then(function() {
+        db.ConfigItem.find({}, function (err, entries) {
+            if (err) throw err;
+            console.log('Config items added: ' + entries.length);
+            db.close();
+        });
+    });
+});

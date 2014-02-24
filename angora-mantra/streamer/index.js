@@ -1,4 +1,5 @@
 var config = require('../config'),
+    handle = require('./handle-tweet'),
     twitter = require('twitter');
 
 var t, stream;
@@ -28,7 +29,7 @@ var streamer = {
                 t.stream('statuses/sample', { language: 'ru' }, function(newStream) {
                     stream = newStream;
                     stream.on('data', function(tweet) {
-                        console.log(tweet.text);
+                        handle(tweet);
                         streamer.status = 'STREAMING';
                     });
                     stream.on('error', function(err) {

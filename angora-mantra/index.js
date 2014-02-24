@@ -9,11 +9,11 @@ var STATUS = {
         icon: 'remove',
         title: 'Stopped. Click to start.'
     },
-    NO_CONNECTION: {
+    ERROR: {
         icon: 'transfer',
-        title: 'Connection problems. Click to retry.'
+        title: 'Something gone wrong. Click to reconnect.'
     },
-    AUTH_REQUIRED: {
+    UNAUTHORIZED: {
         icon: 'user',
         title: 'Authentication required. Click to authorize app.'
     },
@@ -26,6 +26,6 @@ var STATUS = {
 module.exports = {
     config: require('./config'),
     getStatus: function() {
-        return STATUS[streamer.getStatus()];
+        return STATUS[streamer.status];
     }
 };

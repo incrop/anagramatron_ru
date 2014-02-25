@@ -1,15 +1,13 @@
-var app = require('../angora-mantra');
+var view = require('../lib/view');
 
 exports.index = function(req, res){
-    console.log(app);
-    var data = { config: app.config };
+    var data = { config: view.config };
 
-    if (req.query.t !== app.config.token) {
+    if (req.query.t !== view.config.token) {
         res.render('unauthorized', data);
         return;
     }
 
-    data.status = app.getStatus();
+    data.status = view.getStatus();
     res.render('index', data);
-
 };

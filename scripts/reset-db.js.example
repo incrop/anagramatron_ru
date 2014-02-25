@@ -1,4 +1,4 @@
-require('../angora-mantra/db').open(true).then(function(db) {
+require('../lib/db').open(true).then(function(db) {
     var Q = require('q');
 
     function addConf(key, value) {

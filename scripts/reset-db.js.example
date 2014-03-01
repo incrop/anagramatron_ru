@@ -11,14 +11,18 @@ require('../lib/db').open(true).then(function(db) {
     }
 
     // Copy reset-db.example to reset-db.js.
-    // Change these to real OAuth credentials.
+    // Set actual config values.
     // run `npm run reset-db`
 
     Q.all([
         addConf('consumer_key',        'xxxxxxxxxxxxxxxxxxxxxx'),
         addConf('consumer_secret',     'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
         addConf('access_token_key',    'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-        addConf('access_token_secret', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+        addConf('access_token_secret', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+
+        addConf('sender_email',    'xxxxxx@gmail.com'),
+        addConf('sender_password', 'xxxxxxxx'),
+        addConf('receiver_email',  'xxxxxx@gmail.com')
     ]).then(function() {
         db.ConfigItem.find({}, function (err, entries) {
             if (err) throw err;
